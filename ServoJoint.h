@@ -1,21 +1,23 @@
 #pragma once
 
+#define unch unch
+
 class ServoJoint{
-  unsigned char _servoPin;
-  unsigned char _middlePos;
-  unsigned char _actualPos;
-  unsigned char _maxPos;
-  unsigned char _minPos;
+  unch _servoPin;
+  unch _middlePos;
+  unch _actualPos;
+  unch _maxPos;
+  unch _minPos;
 
   public:
-    ServoJoint(unsigned char sPin, unsigned char midPos, unsigned char actPos, unsigned char maxPos, unsigned char minPos){_servoPin = sPin; _middlePos = midPos; _actualPos = actPos; _maxPos = maxPos; _minPos = minPos;}
+    ServoJoint(unch sPin, unch midPos, unch actPos, unch maxPos, unch minPos){_servoPin = sPin; _middlePos = midPos; _actualPos = actPos; _maxPos = maxPos; _minPos = minPos;}
 
-      unsigned char getServoPin(){return _servoPin;}
-      unsigned char getMidServoPos(){return _middlePos;}
-      unsigned char getActServoPos(){return _actualPos;}
-      unsigned char getMaxServoPos(){return _maxPos;}
-      unsigned char getMinServoPos(){return _minPos;}
+      unch getServoPin(){return _servoPin;}
+      unch getMidServoPos(){return _middlePos;}
+      unch getActServoPos(){return _actualPos;}
+      unch getMaxServoPos(){return _maxPos;}
+      unch getMinServoPos(){return _minPos;}
 
-    void setActServoPos(unsigned char actualPos){_actualPos = actualPos;}
+    void setActServoPos(unch actualPos){_actualPos = actualPos;}
     ~ServoJoint();
 };

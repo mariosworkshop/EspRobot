@@ -12,6 +12,8 @@
 #define FILE_NAME "/servos_init.txt"
 
 #define READ_NUM() _file->readStringUntil(' ').toInt()
+#define unch unsigned char
+
 
 class SERVOControl{
 
@@ -23,10 +25,11 @@ class SERVOControl{
       void initServos();
       void printServosInfo();
 
-      void moveFourServos(unsigned char servoPins[4], short servosSteps[4]);
-      void moveSingleServo(unsigned char pin, unsigned char pos);
+      void moveToPos(unch pin, unch pos, short period);
+      void moveToPos(unch pin1, unch pin2, unch pos, short period);
+      void moveToPos(unch pin1, unch pin2, unch pin3, unch pin4, unch pos, short period);
 
-      unsigned char tryFindServo(unsigned char pin);
+      ServoJoint* tryFindServo(unch pin);
       short degreeToPulse(int degree);
     ~SERVOControl();
 };

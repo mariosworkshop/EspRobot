@@ -4,13 +4,10 @@ SERVOControl *control;
 
 void setup(){
   Serial.begin(115200);
-  control = new SERVOControl();
-  control->moveSingleServo(0, 100); 
-  control->moveSingleServo(15, 98);
-  control->moveSingleServo(4, 102); 
-  control->moveSingleServo(11, 104);
+
+  control->moveSingleServo(0, control->tryFindServo(0)->getActServoPos() + 10);
+  control->moveSingleServo(15, control->tryFindServo(15)->getActServoPos() + 10);
 }
 
 void loop(){
-  
 }
