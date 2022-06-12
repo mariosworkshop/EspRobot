@@ -13,5 +13,5 @@ Pin Serva | Stredná pozícia | Maximálna pozícia | Minimálna pozícia
 11 94 180 0
 12 90 180 0
 13 88 180 0
-14 90 180 0
+14 94 180 0
 15 88 180 0
