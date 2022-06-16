@@ -1,14 +1,13 @@
 #pragma once
 
 #include <Adafruit_PWMServoDriver.h>
-#include <FS.h>
+#include "LittleFS.h"
 #include "ServoJoint.h"
 
-#define SERVOMIN  150
-#define SERVOMAX  600
 #define SERVO_COUNT 16
 #define SERVO_FREQ 50
 #define SERVO_MID 90
+#define SERVO_STEP 1
 
 #define FILE_NAME "/servos_init.txt"
 
@@ -26,19 +25,15 @@ class SERVOControl{
   ServoJoint* tryFindServo(unch pin);
   ServoJoint* tryFindBiggActServo(ServoJoint* servo[4]); //najdi najvacsiu aktualnu poziciu
 
- // bool trebaPohnut = false;
+  bool needMove = true;
+
   public:
     SERVOControl();
       void printServosInfo();
 
-      void moveToPos(unch pin, unch pos, short period);
-      void moveToPos(unch pin1, unch pin2, unch pos, short period);
-      void moveToPos(unch pin1, unch pin2, unch pin3, unch pin4, unch pos, short period);
+      void moveServos(short period);
+      void setEstimatedPositions(unch estimatedPositions[16]);
 
-      short degreeToPulse(int degree);
-
-     // void pohniServami(short period);
-     // void setEstimatedPositions(unch estimatedPositions[12]);
-
+      bool getNeedMove(){return needMove;}
     ~SERVOControl();
 };
