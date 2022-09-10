@@ -42,12 +42,12 @@ int SERVOControl::readFSUntil(char delimiter){
 }
 
 void SERVOControl::moveServos(short period) {
-   if (needMove == false) {return;}    
+   //if (needMove == false) {return;}    
     bool changeNeedMove = false;
     for (int i = 0; i < 16; i++) {
         if (_servo[i]->makeStep(_pwm)) {
             changeNeedMove = true;
-            Serial.println("tu som");
+            //Serial.println("tu som");
         }        
     }
     delay(period);
@@ -57,7 +57,7 @@ void SERVOControl::moveServos(short period) {
 void SERVOControl::setEstimatedPositions(unch estimatedPositions[16]) {
   for(int i = 0; i < 16; i++) {
     _servo[i]->setEstimatedPosition(estimatedPositions[i] - (SERVO_MID - _servo[i]->getMidServoPos()));
-    Serial.println(String(i) + " " + String(_servo[i]->getEstimatedPosition()));
+    //Serial.println(String(i) + " " + String(_servo[i]->getEstimatedPosition()));
   }
   needMove = true;
 }
