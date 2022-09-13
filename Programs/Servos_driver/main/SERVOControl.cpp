@@ -18,6 +18,7 @@ void SERVOControl::initServos(){
   unch arrayPos = 0;
 
   readFSUntil('\n');
+
   while(_file->available()){
     _servo[arrayPos] = new ServoJoint(readFSUntil(' '), readFSUntil(' '), 90, readFSUntil(' '), readFSUntil('\n'), SERVO_STEP);
     _servo[arrayPos]->setEstimatedPosition(_servo[arrayPos]->getMidServoPos());
@@ -34,6 +35,8 @@ void SERVOControl::printServosInfo(){
     + "Akt: " + String(_servo[i]->getActServoPos()) + " - "
     + "Max: " + String(_servo[i]->getMaxServoPos()) + " - "
     + "Min: " + String(_servo[i]->getMinServoPos()));
+    char temp = _servo[i]->getMinServoPos();
+    Serial.println(temp);
   }
 }
 
@@ -47,7 +50,6 @@ void SERVOControl::moveServos(short period) {
     for (int i = 0; i < 16; i++) {
         if (_servo[i]->makeStep(_pwm)) {
             changeNeedMove = true;
-            //Serial.println("tu som");
         }        
     }
     delay(period);

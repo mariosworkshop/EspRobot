@@ -3,6 +3,7 @@
 #include <Adafruit_PWMServoDriver.h>
 #include "LittleFS.h"
 #include "ServoJoint.h"
+#include "Arduino.h"
 
 #define SERVO_COUNT 16
 #define SERVO_FREQ 50
@@ -10,9 +11,6 @@
 #define SERVO_STEP 1
 
 #define FILE_NAME "/servos_init.txt"
-
-#define unch unsigned char
-
 
 class SERVOControl{
 
@@ -22,8 +20,6 @@ class SERVOControl{
 
   void initServos();
   int readFSUntil(char delimiter); 
-  ServoJoint* tryFindServo(unch pin);
-  ServoJoint* tryFindBiggActServo(ServoJoint* servo[4]); //najdi najvacsiu aktualnu poziciu
 
   bool needMove = true;
 

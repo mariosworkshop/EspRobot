@@ -6,8 +6,8 @@
 #define SERVOMAX  600
 
 class ServoJoint{
-  unch _step; // toto 
-  unch _estimatedPos; // toto
+  unch _step; 
+  unch _estimatedPos;
   unch _servoPin;
   unch _middlePos;
   unch _actualPos;
@@ -26,26 +26,26 @@ class ServoJoint{
 
     bool makeStep(Adafruit_PWMServoDriver *_pwm) {
       if (_estimatedPos == _actualPos) return false;
-      if (abs(_actualPos - _estimatedPos) < _step) {
-        _pwm->setPWM(_servoPin, 0, degreeToPulse(_estimatedPos));
-        _actualPos = _estimatedPos;
+        if (abs(_actualPos - _estimatedPos) < _step) {
+          _pwm->setPWM(_servoPin, 0, degreeToPulse(_estimatedPos));
+          _actualPos = _estimatedPos;
           return true;
-      }
-      if (_actualPos > _estimatedPos) {
-        _pwm->setPWM(_servoPin, 0, degreeToPulse(_actualPos - _step));
-        _actualPos -= _step;
-      } else {
-        _pwm->setPWM(_servoPin, 0, degreeToPulse(_actualPos + _step)); 
-        _actualPos += _step;
-      }
-        return true;
+        }
+        if (_actualPos > _estimatedPos) {
+          _pwm->setPWM(_servoPin, 0, degreeToPulse(_actualPos - _step));
+          _actualPos -= _step;
+        } else {
+          _pwm->setPWM(_servoPin, 0, degreeToPulse(_actualPos + _step)); 
+          _actualPos += _step;
+        }
+          return true;
     }
 
     short degreeToPulse(int degree){
       return map(degree, 0, 180, SERVOMIN, SERVOMAX);
     }
 
-    void setEstimatedPosition(unch estimated) {_estimatedPos = estimated;}; // toto
+    void setEstimatedPosition(unch estimated) {_estimatedPos = estimated;};
     void setActServoPos(unch actualPos){_actualPos = actualPos;}
     
     ~ServoJoint();
