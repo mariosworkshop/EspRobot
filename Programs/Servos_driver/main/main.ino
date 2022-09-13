@@ -37,7 +37,7 @@ void loop(){
   }
   control->moveServos(30);
 
-  if (ax != a.acceleration.x){
+  if (ax != a.acceleration.x){ //naklananie noh
     ax = map(ax, -10, 10, 180, 0);
     positions[14] = ax;
     positions[1] = map(ax, 180, 0, 0, 180);
