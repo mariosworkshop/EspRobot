@@ -1,34 +1,38 @@
 #include "SERVOControl.h"
-#include <Adafruit_MPU6050.h>
+#include "PS2_remote.h"
+#include "Gyro.h"
 
 SERVOControl *control;
-Adafruit_MPU6050 mpu;
+PS2_remote *ps2;
+Gyro *mpu;
 
-unch positions[SERVO_COUNT] = {90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90};
-char ax = 0;
+unch positions[SERVO_COUNT] = {90, 130, 50, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 130, 50, 90};
 
 void setup(){
   Serial.begin(115200);
   control = new SERVOControl();
-  control->setEstimatedPositions(positions);
+  ps2 = new PS2_remote();
+  mpu = new Gyro();
 
-  if (!mpu.begin()) {
-    Serial.println("Failed to find MPU6050 chip");
-    while (1) {
-      delay(10);
-    }
-  }
-  mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
-  mpu.setGyroRange(MPU6050_RANGE_500_DEG);
-  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
+  control->setEstimatedPositions(positions);
 }
 
 void loop(){
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
-  Serial.print("Acceleration X: ");
-  Serial.println(a.acceleration.x);
-
+  if(ps2->isPressed(PSB_TRIANGLE)){
+    positions[1] = 90;
+    positions[2] = 90;
+    positions[13] = 90;
+    positions[14] = 90;
+  }
+  else if(ps2->isPressed(PSB_CROSS)){
+    positions[1] = 130;
+    positions[2] = 50;
+    positions[13] = 130;
+    positions[14] = 50;
+  }
+  else{}
+  control->setEstimatedPositions(positions);
+  mpu->readValues();
   if(!control->getNeedMove()){
     if(Serial.available() > 0){
       parseSerial(',');
@@ -36,14 +40,6 @@ void loop(){
     control->setEstimatedPositions(positions);
   }
   control->moveServos(30);
-
-  if (ax != a.acceleration.x){ //naklananie noh
-    ax = map(ax, -10, 10, 180, 0);
-    positions[14] = ax;
-    positions[1] = map(ax, 180, 0, 0, 180);
-    control->setEstimatedPositions(positions);
-  }
-  ax = a.acceleration.x;
 }
 
 void parseSerial(char delimiter){
