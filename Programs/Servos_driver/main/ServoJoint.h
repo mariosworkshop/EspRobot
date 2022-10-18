@@ -6,16 +6,18 @@
 #define SERVOMAX  600
 
 class ServoJoint{
-  unch _step; 
-  unch _estimatedPos;
-  unch _servoPin;
-  unch _middlePos;
-  unch _actualPos;
-  unch _maxPos;
-  unch _minPos;
+  unch _step, _estimatedPos, _servoPin, _middlePos, _actualPos, _maxPos, _minPos;
 
   public:
-    ServoJoint(unch sPin, unch midPos, unch actPos, unch maxPos, unch minPos, int step){_servoPin = sPin; _middlePos = midPos; _actualPos = actPos; _maxPos = maxPos; _minPos = minPos;_estimatedPos = _middlePos, _step = step;}
+    ServoJoint(unch sPin, unch midPos, unch actPos, unch maxPos, unch minPos, int step){
+      _servoPin = sPin; 
+      _middlePos = midPos; 
+      _actualPos = actPos; 
+      _maxPos = maxPos; 
+      _minPos = minPos;
+      _estimatedPos = _middlePos, 
+      _step = step;
+    }
 
     unch getServoPin(){return _servoPin;}
     unch getMidServoPos(){return _middlePos;}

@@ -1,17 +1,19 @@
-#include "SERVOControl.h"
+#include "ServoControl.h"
 
-SERVOControl::SERVOControl(){
+ServoControl::ServoControl(){
   _pwm = new Adafruit_PWMServoDriver();
   _pwm->begin();
   _pwm->setOscillatorFrequency(27000000);
   _pwm->setPWMFreq(SERVO_FREQ);
   delay(10);
 
+  _rServo = new ReadServo(0, 0, 0, 0, 0);
+
   initServos();
-  printServosInfo();  //Odkomentuj, keď chceš vypísať všetky dáta o servách
+  printServosInfo();  //Uncomment, if you want to write down everything about servos
 }
 
-void SERVOControl::initServos(){
+void ServoControl::initServos(){
   LittleFS.begin();
   _file = new File();
   *_file = LittleFS.open(FILE_NAME, "r");
@@ -20,14 +22,15 @@ void SERVOControl::initServos(){
   readFSUntil('\n');
 
   while(_file->available()){
-    _servo[arrayPos] = new ServoJoint(readFSUntil(' '), readFSUntil(' '), 90, readFSUntil(' '), readFSUntil('\n'), SERVO_STEP);
+    _servo[arrayPos] = new ServoJoint(readFSUntil(' '), readFSUntil(' '), _rServo->readValue(_servo[arrayPos]->getServoPin()), readFSUntil(' '), readFSUntil('\n'), SERVO_STEP);
     _servo[arrayPos]->setEstimatedPosition(_servo[arrayPos]->getMidServoPos());
     arrayPos++;
   }
   LittleFS.end();
+  delete _rServo;
 }
 
-void SERVOControl::printServosInfo(){
+void ServoControl::printServosInfo(){
   Serial.println("");
   for (int i = 0; i < SERVO_COUNT; i++){
     Serial.println("Pin: " + String(_servo[i]->getServoPin()) + " - "
@@ -40,11 +43,11 @@ void SERVOControl::printServosInfo(){
   }
 }
 
-int SERVOControl::readFSUntil(char delimiter){
+int ServoControl::readFSUntil(char delimiter){
   return _file->readStringUntil(delimiter).toInt();
 }
 
-void SERVOControl::moveServos(short period) {
+void ServoControl::moveServos(short period) {
    //if (needMove == false) {return;}    
     bool changeNeedMove = false;
     for (int i = 0; i < 16; i++) {
@@ -56,15 +59,15 @@ void SERVOControl::moveServos(short period) {
     needMove = changeNeedMove;
 }
 
-void SERVOControl::setEstimatedPositions(unch estimatedPositions[16]) {
+void ServoControl::setEstimatedPositions(unch estimatedPositions[16]) {
   for(int i = 0; i < 16; i++) {
     _servo[i]->setEstimatedPosition(estimatedPositions[i] - (SERVO_MID - _servo[i]->getMidServoPos()));
-    //Serial.println(String(i) + " " + String(_servo[i]->getEstimatedPosition()));
+    LOG("\n" + String(i) + " " + String(_servo[i]->getEstimatedPosition()));
   }
   needMove = true;
 }
 
-SERVOControl::~SERVOControl(){
+ServoControl::~ServoControl(){
   for (int i = 0; i < SERVO_COUNT; i++){ delete _servo[i]; }
-  delete _file, _pwm;
+  //delete _file, _pwm;
 }
