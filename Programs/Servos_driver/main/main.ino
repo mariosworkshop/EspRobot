@@ -6,6 +6,8 @@ ServoControl *driver;
 PS2_remote *ps2;
 Gyro *mpu;
 
+int speed = 30;
+
 unch positions[SERVO_COUNT] = {90, 130, 50, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 130, 50, 90};
 
 void setup(){
@@ -18,15 +20,17 @@ void setup(){
 }
 
 void loop(){
-  driver->setEstimatedPositions(positions);
+  /*driver->setEstimatedPositions(positions);
   mpu->readValues();
+  
   if(!driver->getNeedMove()){
     if(Serial.available() > 0){
       parseSerial(',');
     }
     driver->setEstimatedPositions(positions);
   }
-  driver->moveServos(30);
+  driver->moveServos(30);*/
+  parseSerial(',');
 }
 
 void parseSerial(char delimiter){
@@ -50,6 +54,10 @@ void parseSerial(char delimiter){
 }
 
 void reactToPs2(){
+    
+  int value = ps2->readJoystick(PSS_LY);
+  speed = map(value, 0, 255, 30, 500);
+
   if(ps2->isPressed(PSB_TRIANGLE)){
     positions[1] = 90;
     positions[2] = 90;

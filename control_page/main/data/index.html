@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Servo positions</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="script.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container p-3 bg-light text-center rounded" style="margin-top: 10%; width: 1000px;">
+      <b style="font-size: 25px">Servo Controller</b>
+
+      <div>
+        <script>print_servos();updateValue();getCheckedCheckBoxes();disableElements();</script>
+      </div>
+      <div style="position: relative; margin-top: 20px; width: 550px; margin-left: auto; margin-right: auto;">
+        <textarea id="savedPoses" cols="51" rows="10" style="width: 100%; height: 100%; box-sizing: border-box;" readonly></textarea>
+
+        <input type="text" id="reverse_btn_state" style="visibility: hidden;">
+
+        <button type="button" id="sendLastPos" class="btn btn-outline-dark" onclick="sendLastPosition()" style="position: absolute; top: 0; right: 0;">SLP</button>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <button type="button" class="btn btn-danger" onclick="resetCheckBoxes()">Reset checkboxes</button>
+        <button type="button" class="btn btn-danger" onclick="resetSliders()">Reset sliders</button>
+        <button type="button" class="btn btn-danger" onclick="resetReverse()">Reset revers</button>
+        <button type="button" class="btn btn-success" style="margin-left: 30px;" onclick="savePoses()">Save poses</button>
+        <button type="button" class="btn btn-danger" onclick="clearPoses()">Clear poses</button>
+        <button type="button" id="download" class="btn btn-info" onclick="download()">Download</button>
+      </div>
+    </div>
+  </body>
+</html>
