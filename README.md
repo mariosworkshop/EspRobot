@@ -31,10 +31,10 @@
 - show what robot can do
 
 ## TASK LIST
-- [x] Model legs
-- [x] Print it
-- [x] Assembly and revive
-- [x] Create website to move servos wirelessly
+- [x] ~~Model legs~~
+- [x] ~~Print it~~
+- [x] ~~Assembly and revive~~
+- [x] ~~Create website to move servos wirelessly~~
 - [ ] Learn it walk by program
 - [ ] Model and print rest of body
 - [ ] Join everything together
