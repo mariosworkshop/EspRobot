@@ -2,6 +2,8 @@
 
 - Own project of walking robot, based on ESP8266 (mikrocontroller), MPU6050 (gyroscope) and PCA9685 (servo driver). Work in progress...
 
+#
+
 ##### Click to see video about robot ->
 [![Checkout features of the robot: ](https://github.com/mariokompan/EspRobot/blob/main/legs_foto.png)](https://youtu.be/hFYa1mzJf1Q)
 
@@ -27,3 +29,17 @@
 ## [robot_moving.mp4](https://youtu.be/hFYa1mzJf1Q)
 - introduction video to robot
 - show what robot can do
+
+## TASK LIST
+- [x] Model legs
+- [x] Print it
+- [x] Assembly and revive
+- [x] Create website to move servos wirelessly
+- [ ] Learn it walk by program
+- [ ] Model and print rest of body
+- [ ] Join everything together
+- [ ] Create and solder pcb-s
+- [ ] Revive whole robot
+- [ ] Learn it walk by neural network
+- [ ] Learn it speak, listen and recognize faces
+- [ ] ...
