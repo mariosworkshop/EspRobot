@@ -24,6 +24,6 @@
 ## [legs_foto.png](https://github.com/mariokompan/EspRobot/blob/main/legs_foto.png)
 > just photo of legs next to monitor
 
-# [robot_moving.mp4](https://youtu.be/hFYa1mzJf1Q)
+## [robot_moving.mp4](https://youtu.be/hFYa1mzJf1Q)
 - introduction video to robot
 - show what robot can do
