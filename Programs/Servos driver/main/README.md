@@ -31,3 +31,6 @@
 - move servos by SERVOControl.h, if needed
 - parse serial data to array and send it to servos
 - react to ps2 events
+
+## [data](https://github.com/mariokompan/EspRobot/tree/main/Programs/Servos%20driver/main/data)
+- contain data to home positions of servos
