@@ -4,7 +4,7 @@
 
 - host on ESP8266
 - control servo moving by sliders and sending XMLHTTPREQUEST with package of data
-- create downloadable seros poses list
+- create downloadable servos poses list
 
 ## Program
 
