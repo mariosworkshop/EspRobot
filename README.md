@@ -1,7 +1,7 @@
 # EspRobot
 
-Vlastný projekt chodiacich nôh, založený na ESP8266 (mikrokontrolér), MPU6050 (gyroskop) a PCA9685 (servo driver). Zatiaľ ešte v plienkach :).
+Own project of walking robot, based on ESP8266 (mikrocontroller), MPU6050 (gyroscope) and PCA9685 (servo driver). Work in progress...
 
-![github-small](https://github.com/mariokompan/EspRobot/blob/main/legs_foto.png)
 
-https://user-images.githubusercontent.com/66800289/190894193-6a5099d4-ee1f-4483-8932-a308583bad4e.mp4
+Click to see video about robot ->
+[![Checkout features of the robot: ](https://github.com/mariokompan/EspRobot/blob/main/legs_foto.png)](https://youtu.be/hFYa1mzJf1Q)
