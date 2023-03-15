@@ -1,5 +1,6 @@
 # Control panel
-- :exclamation: experimental part of code to control and see robot progress on display
+- :exclamation: ~~experimental part of code~~ 
+- to control and see robot progress on display
 > to future
 
 ## Bitmaps.h
