@@ -4,4 +4,4 @@ Vlastný projekt chodiacich nôh, založený na ESP8266 (mikrokontrolér), MPU60
 
 ![github-small](https://github.com/mariokompan/EspRobot/blob/main/legs_foto.png)
 
-[https://github.com/mariokompan/EspRobot/blob/main/robot_moving.mp4]
+ <a data-type="iframe" href="https://drive.google.com/file/d/1dWBSt06ycjtu9CvamTNXyVLjqP8oKVRD/view?usp=share_link" data-fancybox="gallery-video">
