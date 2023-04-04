@@ -35,7 +35,7 @@
 - [x] ~~Print it~~
 - [x] ~~Assembly and revive~~
 - [x] ~~Create website to move servos wirelessly~~
-- [ ] Learn it walk by program
+- [x] Learn it walk by program
 - [ ] Model and print rest of body
 - [ ] Join everything together
 - [ ] Create and solder pcb-s
