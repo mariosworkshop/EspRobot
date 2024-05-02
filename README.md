@@ -5,7 +5,7 @@
 #
 
 ##### Click to see video about robot ->
-[![Checkout features of the robot: ](https://github.com/mariokompan/EspRobot/blob/main/legs_foto.png)](https://youtu.be/hFYa1mzJf1Q)
+[![Checkout features of the robot: ](https://github.com/mariokompan/EspRobot/blob/main/legs_foto.png)](https://youtu.be/RzPc_VtcKAc)
 
 ## [3D models](https://github.com/mariokompan/EspRobot/tree/main/3D%20models)
 - all 3D models to print robotic legs
